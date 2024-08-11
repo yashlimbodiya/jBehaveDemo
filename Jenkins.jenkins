@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven 3.6.3'  // Ensure Maven is installed and configured in Jenkins
+        jdk 'JDK11'  // Ensure JDK is installed and configured in Jenkins
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/yashlimbodiya/jBehaveDemo'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Run JBehave Tests') {
+            steps {
+                sh 'mvn verify -Pjbehave'
+            }
+        }
+
+        stage('Publish JBehave Reports') {
+            steps {
+                publishHTML(target: [
+                    reportName: 'JBehave Report',
+                    reportDir: 'target/jbehave-reports',
+                    reportFiles: 'view/reports.html',
+                    alwaysLinkToLastBuild: true
+                ])
+            }
+        }
+    }
+
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
+            cleanWs()
+        }
+    }
+}

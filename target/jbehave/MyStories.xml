@@ -1,0 +1,27 @@
+<story id="73d4dded-2a55-4abe-9c46-979ec145aa38" path="MyStories.story" title="">
+<beforeSystemStorySteps>
+</beforeSystemStorySteps>
+<beforeUserStorySteps>
+</beforeUserStorySteps>
+<scenario id="4143f4ab-0937-4514-9a7d-b33536cd07fc" keyword="Scenario:" title="trader is alerted above threshold">
+<beforeSystemScenarioSteps>
+</beforeSystemScenarioSteps>
+<beforeUserScenarioSteps>
+</beforeUserScenarioSteps>
+<steps>
+<step outcome="successful">Given a stock of symbol STK1 and a threshold of <parameter>10.0</parameter></step>
+<step outcome="successful">When the stock is traded at <parameter>11.0</parameter></step>
+<step outcome="successful">Then the alert status should be ON</step>
+</steps>
+<afterUserScenarioSteps>
+</afterUserScenarioSteps>
+<afterSystemScenarioSteps>
+</afterSystemScenarioSteps>
+<timing phase="start">1723413573963</timing>
+<timing phase="end">1723413573984</timing>
+</scenario>
+<afterUserStorySteps>
+</afterUserStorySteps>
+<afterSystemStorySteps>
+</afterSystemStorySteps>
+</story>
